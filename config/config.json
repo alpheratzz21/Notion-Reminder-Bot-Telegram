@@ -1,0 +1,9 @@
+{
+    "database_id": "217a2ab1d9cd809fbde4c7b375b60506",
+    "column_mapping": {
+      "date": "Date",
+      "title": "Title",
+      "status": "Task Status"
+    }
+  }
+  

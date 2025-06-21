@@ -1,0 +1,9 @@
+.env
+__pycache__/
+credentials.json
+*.pyc
+token.json
+*.pem
+*.key
+*.env
+*.p12
