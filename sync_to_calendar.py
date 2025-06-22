@@ -23,8 +23,16 @@ def google_login():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+            from google.oauth2.service_account import Credentials
+            import json
+            import os
+
+            def google_login():
+                creds_json = os.getenv("GOOGLE_CALENDAR_CREDENTIALS")
+                creds_dict = json.loads(creds_json)
+                creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
+                return build("calendar", "v3", credentials=creds)
+
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
     return build('calendar', 'v3', credentials=creds)
