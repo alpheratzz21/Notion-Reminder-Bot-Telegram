@@ -1,5 +1,3 @@
-# File: get_reminder_data.py
-
 from notion_client import Client
 import os
 import datetime

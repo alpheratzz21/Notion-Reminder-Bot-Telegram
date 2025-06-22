@@ -5,7 +5,7 @@ import json
 
 load_dotenv()
 TELEGRAM_TOKEN = os.environ("TELEGRAM_TOKEN")
-CHAT_ID = os.environ("TELEGRAM_CHAT_ID")  # <- Tambahkan ini di .env
+CHAT_ID = os.environ("TELEGRAM_CHAT_ID")
 
 with open("config/config.json") as f:
     config = json.load(f)

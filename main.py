@@ -1,20 +1,34 @@
-# File: main.py
-
 from get_reminder_data import get_upcoming_reminders
 import json
+import os
+import requests
 
-# Load mapping dari config.json
+# Load env direct from GitHub Actions
+TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
+CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+
+# Load mapping from config.json
 with open("config/config.json") as f:
     config = json.load(f)
 
 column_mapping = config["column_mapping"]
 
+def send_telegram_message(text):
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    payload = {"chat_id": CHAT_ID, "text": text}
+    response = requests.post(url, data=payload)
+    print(f"[DEBUG] Sent to Telegram: {response.status_code} — {response.text}")
+
 def main():
     reminders = get_upcoming_reminders()
     for item in reminders:
-        task = item.get("title", "No Title")
-        due = item.get("date", "No Date")
-        status = item.get("status", "Unknown")
-        print(f"🔔 {task} → {due} (Status: {status})")
+        task = item.get(column_mapping["title"], "No Title")
+        due = item.get(column_mapping["date"], "No Date")
+        status = item.get(column_mapping["status"], "Unknown")
+
+        message = f"🔔 {task} → {due} (Status: {status})"
+        print(message)
+        send_telegram_message(message)
+
 if __name__ == "__main__":
     main()
