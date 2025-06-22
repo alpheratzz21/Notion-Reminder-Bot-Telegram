@@ -24,7 +24,8 @@ def main():
         status = item.get("status", "No Status")
 
         send_telegram_message(f"📌 {task}\n📅 Deadline: {due}\n🔖 Status: {status}")
-
+print(f"[DEBUG] TELEGRAM_TOKEN length: {len(TELEGRAM_TOKEN)}")
+print(f"[DEBUG] CHAT_ID repr: {repr(CHAT_ID)}")
 print(f"[DEBUG] Chat ID (repr): {repr(CHAT_ID)}")
 
 if __name__ == "__main__":
