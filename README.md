@@ -19,7 +19,7 @@ Automatically fetch reminders from your Notion database and send them directly t
 
 .
 ├── config/
-│ └── config.json
+│└── config.json
 ├── get_reminder_data.py # Fetches data from Notion
 ├── send_telegram_reminder.py # Sends message to Telegram
 ├── main.py # Entry point, combines logic
@@ -44,14 +44,13 @@ Add these via **GitHub → Settings → Secrets → Actions**.
 
 ### 2. 🗃️ Configure `config/config.json`
 
-```json
+json
 {
   "database_id": "YOUR_NOTION_DATABASE_ID",
   "column_mapping": {
     "title": "Title",
     "date": "Date",
     "status": "Status",
-    "reminder": "Reminder"  // Optional checkbox column
   }
 }
 
