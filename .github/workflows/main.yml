@@ -2,7 +2,7 @@ name: Notion Reminder Scheduler
 
 on:
   schedule:
-    - cron: "30 * * * *"  # Setiap setengah jam ## hari jam 06.00 WIB (UTC+7)
+    - cron: "30 * * * *"  # Setiap setengah jam  WIB (UTC+7)
   workflow_dispatch:     # Bisa juga dijalankan manual
 
 jobs:
@@ -12,7 +12,6 @@ jobs:
       NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -25,12 +24,5 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Create credentials.json
-        run: |
-          echo '${{ secrets.CREDENTIALS_JSON}}' > credentials.json
-
       - name: Run main.py (Telegram Reminder)
         run: python main.py
-
-      - name: Run sync_to_calendar.py (Google Calendar)
-        run: python sync_to_calendar.py
