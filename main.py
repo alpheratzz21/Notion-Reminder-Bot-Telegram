@@ -4,8 +4,8 @@ import os
 import requests
 
 # Load env direct from GitHub Actions
-TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
-CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"].strip()
+CHAT_ID = os.environ["TELEGRAM_CHAT_ID"].strip()
 
 # Load mapping from config.json
 with open("config/config.json") as f:
