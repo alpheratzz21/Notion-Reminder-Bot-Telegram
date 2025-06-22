@@ -26,9 +26,9 @@ def send_telegram_message(text):
 def main():
     reminders = get_upcoming_reminders()
     for item in reminders:
-        task = item.get(column_mapping["title"], "No Title")
-        due = item.get(column_mapping["date"], "No Date")
-        status = item.get(column_mapping["status"], "Unknown")
+        task = item.get("title", "No Title")
+        due = item.get("date", "No Date")
+        status = item.get("status", "Unknown")
 
         message = f"🔔 {task} → {due} (Status: {status})"
         print(message)
