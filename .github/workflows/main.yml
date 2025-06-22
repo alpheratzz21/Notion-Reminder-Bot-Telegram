@@ -2,7 +2,7 @@ name: Notion Reminder Scheduler
 
 on:
   schedule:
-    - cron: "0 23 * * 0"  # Setiap hari jam 08.00 WIB (UTC+7)
+    - cron: "30 * * * *"  # Setiap setengah jam ## hari jam 06.00 WIB (UTC+7)
   workflow_dispatch:     # Bisa juga dijalankan manual
 
 jobs:
