@@ -1,12 +1,11 @@
 import os
 import requests
-from dotenv import load_dotenv
 from get_reminder_data import get_upcoming_reminders
 import json
 
 load_dotenv()
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")  # <- Tambahkan ini di .env
+TELEGRAM_TOKEN = os.environ("TELEGRAM_TOKEN")
+CHAT_ID = os.environ("TELEGRAM_CHAT_ID")  # <- Tambahkan ini di .env
 
 with open("config/config.json") as f:
     config = json.load(f)
