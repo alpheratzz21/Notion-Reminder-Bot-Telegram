@@ -69,12 +69,13 @@ def get_upcoming_reminders():
             if notion_name in props
         }
 
-        status = formatted.get(column_mapping["status"], "").lower()
+        status = formatted.get("status", "").lower()
         if status == "done":
             continue
 
         results.append(formatted)
 
     results.sort(key=lambda x: x.get("date"))
-    
+    print("[DEBUG] Reminder found:", results)
+
     return results
