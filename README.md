@@ -18,13 +18,14 @@ Automatically fetch reminders from your Notion database and send them directly t
 ## 🧱 Project Structure
 
 .
-├── config/
-│└── config.json
-├── get_reminder_data.py # Fetches data from Notion
-├── send_telegram_reminder.py # Sends message to Telegram
-├── main.py # Entry point, combines logic
-├── .env # (Optional for local development)
-└── .github/workflows/main.yml # GitHub Actions workflow
+
+├── config/        
+│└── config.json                      
+├── get_reminder_data.py # Fetches data from Notion          
+├── send_telegram_reminder.py # Sends message to Telegram           
+├── main.py # Entry point, combines logic          
+├── .env # (Optional for local development)          
+└── .github/workflows/main.yml # GitHub Actions workflow      
 
 ---
 
@@ -45,48 +46,52 @@ Add these via **GitHub → Settings → Secrets → Actions**.
 ### 2. 🗃️ Configure `config/config.json`
 
 json
+````
 {
-  "database_id": "YOUR_NOTION_DATABASE_ID",
-  "column_mapping": {
-    "title": "Title",
-    "date": "Date",
-    "status": "Status",
-  }
-}
+  "database_id": "YOUR_NOTION_DATABASE_ID",              
+  "column_mapping": {             
+    "title": "Title",           
+    "date": "Date",                                                
+    "status": "Status",                                                                                      
+  }                                                 
+}         
 
-##🚀 How It Works
+````
+
+## 🚀 How It Works
 get_reminder_data.py: Queries Notion for tasks with date ≥ today and status ≠ "done"
 
-send_telegram_reminder.py: Sends those tasks to Telegram
+- send_telegram_reminder.py: Sends those tasks to Telegram
 
-main.py: Runs both scripts together
+- main.py: Runs both scripts together
 
-.github/workflows/main.yml: Automates the execution daily via GitHub Actions
+- .github/workflows/main.yml: Automates the execution daily via GitHub Actions
 
-##🧪 Optional Local Testing
-Create a .env file:
-NOTION_SECRET=your_secret
-TELEGRAM_TOKEN=your_bot_token
-TELEGRAM_CHAT_ID=your_chat_id
-Then run:
-pip install -r requirements.txt
-python main.py
+## 🧪 Optional Local Testing
+Create a .env file:                    
+- NOTION_SECRET=your_secret        
+- TELEGRAM_TOKEN=your_bot_token          
+- TELEGRAM_CHAT_ID=your_chat_id         
+Then run:          
+- pip install -r requirements.txt           
+- python main.py        
 
-##📆 GitHub Actions Automation
+## 📆 GitHub Actions Automation
 Already includes a scheduler in main.yml:
+````
 on:
   schedule:
     - cron: '0 23 * * *' # Every Day 06:00 AM GMT+7
   workflow_dispatch:
-
-##🧩 Technical Notes
-Uses a combination of filters: checkbox = true and date >= today
+````
+## 🧩 Technical Notes
+Uses a combination of filters: checkbox = true and date >= today   
 
 Tasks with "status": "done" are excluded
 
 Your Telegram bot must have interacted with the target chat at least once
 
-##📥 Credits & Acknowledgments
+## 📥 Credits & Acknowledgments
 Notion SDK for Python
 
 Telegram Bot API
