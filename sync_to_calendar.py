@@ -15,6 +15,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 def google_login():
     creds_json = os.getenv("GOOGLE_CALENDAR_CREDENTIALS")
+    print("[DEBUG] creds_json exists:", bool(creds_json))
     creds_dict = json.loads(creds_json)
     creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
     return build("calendar", "v3", credentials=creds)
