@@ -17,11 +17,8 @@ def send_telegram_message(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {"chat_id": CHAT_ID, "text": text}
     
-    print("[DEBUG] Telegram URL:", url)
-    print("[DEBUG] Payload", payload)
 
     response = requests.post(url, data=payload)
-    print(f"[DEBUG] Sent to Telegram: {response.status_code} — {response.text}")
 
 def main():
     reminders = get_upcoming_reminders()

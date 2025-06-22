@@ -7,8 +7,6 @@ load_dotenv()
 TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"].strip()
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"].strip()
 
-print(f"[DEBUG] TELEGRAM_TOKEN length: {len(TELEGRAM_TOKEN)}")
-print(f"[DEBUG] CHAT_ID repr: {repr(CHAT_ID)}")
 
 with open("config/config.json") as f:
     config = json.load(f)
@@ -28,7 +26,6 @@ def main():
 
         send_telegram_message(f"📌 {task}\n📅 Deadline: {due}\n🔖 Status: {status}")
 
-print(f"[DEBUG] Chat ID (repr): {repr(CHAT_ID)}")
 
 if __name__ == "__main__":
     main()

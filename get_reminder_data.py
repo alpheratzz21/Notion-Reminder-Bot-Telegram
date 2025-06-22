@@ -76,6 +76,5 @@ def get_upcoming_reminders():
         results.append(formatted)
 
     results.sort(key=lambda x: x.get("date"))
-    print("[DEBUG] Reminder found:", results)
 
     return results
