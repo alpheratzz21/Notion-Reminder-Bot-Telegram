@@ -30,7 +30,7 @@ def main():
 
         message = f"🔔 {task} → {due} \n 🔖 Status: {status} \n 📝 Deskripsi :{desc}"
         print(message)
-        send_telegram_message(message)
+        send_telegram_message()
 
 if __name__ == "__main__":
     main()
