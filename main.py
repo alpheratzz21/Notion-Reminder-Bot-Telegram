@@ -26,6 +26,7 @@ def main():
         task = item.get("title", "No Title")
         due = item.get("date", "No Date")
         status = item.get("status", "Unknown")
+        description = item.get("description", "")
 
         message = f"🔔 {task} → {due} (Status: {status})"
         print(message)
