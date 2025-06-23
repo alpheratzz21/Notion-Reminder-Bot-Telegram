@@ -28,9 +28,9 @@ def main():
         status = item.get("status", "Unknown")
         desc = item.get("description", "")
 
-        message = f"🔔 {task} → {due} \n 🔖 Status: {status} \n 📝 Deskripsi :{desc}"
+        message = f"📌 {task}\n📅 Deadline: {due}\n🔖 Status: {status} \n 📝 Deskripsi :{desc} "
         print(message)
-        send_telegram_message()
+        send_telegram_message(message)
 
 if __name__ == "__main__":
     main()
