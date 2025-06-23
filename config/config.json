@@ -3,7 +3,8 @@
     "column_mapping": {
       "date": "Date",
       "title": "Title",
-      "status": "Task Status"
+      "status": "Task Status",
+      "description": "Description"
     }
   }
   
