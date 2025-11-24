@@ -55,9 +55,11 @@ def get_upcoming_reminders():
             "date": {"on_or_after": today}
         })
 
-    query = notion.databases.query_database(
-        database_id=DATABASE_ID,
-        filter={"and": filters}
+    query = notion.databases.query(
+        **{
+        "database_id": DATABASE_ID,
+        "filter": {"and": filters}
+        }
     )
 
     results = []
