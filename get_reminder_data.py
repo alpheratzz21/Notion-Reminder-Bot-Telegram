@@ -56,10 +56,8 @@ def get_upcoming_reminders():
         })
 
     query = notion.databases.query_database(
-        DATABASE_ID,
-        {
-            "filter": {"and": filters}
-        }
+        database_id=DATABASE_ID,
+        filter={"and": filters}
     )
 
     results = []
